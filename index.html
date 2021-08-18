@@ -2,150 +2,184 @@
 <html>
 <head>
   <title>JohnAbeJames.com</title>
+  <style>
+    body {
+        background-color: black;
+        margin: auto;
+        padding: 16px;
+        max-width: 600px;
+    }
+    h1   {color: lightgrey;}
+    p    {color: grey;}
+    a    {color: powderblue;}
+    </style>
 </head>
 <body>
 
     <h1>JohnAbeJames.com</h1>
-    <p>Software Developer and former Transport Modeller</p>
-    
-    <a href="https://www.linkedin.com/in/john-a-james/">Find me on LinkedIn!</a>
-
+    <p>
+        Software Developer and former Transport Modeller. 
+        <a href="https://www.linkedin.com/in/john-a-james/">LinkedIn.</a>
+    </p>
+    <br>
     <h2>WordPress plugins and Updating this site</h2>
     <li>19/10/2020</li>
-    <br>
-    I’ve recently added Google Analytics to this site, using the MonsterInsights WordPress plugin, which was nice and easy. Visitors will now see a GDPR compliant prompt to accept analytics cookies in a banner; this uses another WordPress plugin, the inventively named ‘Google Analytics Opt-Out‘. I was previously doing any monitoring by using the Bandwidth graphs on Digital Ocean as a proxy, but this was an exercise in being more nosey.
-    <br>
-    The only other news on the site is that I’m thinking of putting it on a t3.nano in AWS. This would cost £3.53 per month including tax instead of the £4.68 I’m paying for a Digital Ocean Droplet. I’m simply not using all the compute or memory. I may try another plugin UpdraftPlus to copy everything across.
-
+    <p>
+        I’ve recently added Google Analytics to this site, using the MonsterInsights WordPress plugin, which was nice and easy. Visitors will now see a GDPR compliant prompt to accept analytics cookies in a banner; this uses another WordPress plugin, the inventively named ‘Google Analytics Opt-Out‘. I was previously doing any monitoring by using the Bandwidth graphs on Digital Ocean as a proxy, but this was an exercise in being more nosey.
+        <br>
+        The only other news on the site is that I’m thinking of putting it on a t3.nano in AWS. This would cost £3.53 per month including tax instead of the £4.68 I’m paying for a Digital Ocean Droplet. I’m simply not using all the compute or memory. I may try another plugin UpdraftPlus to copy everything across.
+    </p>
 
     <h2># HASH agent based modelling</h2>
     <li>28/06/2020</li>
-    <br>
-This is my review of the HASH beta which I enjoyed checking out.
-<br>
-Ant Foraging Example Simulation
-HASH is a platform for creating simulations in which agents such as ants or people move and interact according to programmable behaviours. Following the simulation, which can be viewed in 3D, there are built in tools for analysis.
-<br>
+    <p>
+        This is my review of the HASH beta which I enjoyed checking out.
+        <br>
+        <br>
+        <img src='./pics/hash1.png'/>
+        Ant Foraging Example Simulation
+        <br>
+        <br>
+        HASH is a platform for creating simulations in which agents such as ants or people move and interact according to programmable behaviours. Following the simulation, which can be viewed in 3D, there are built in tools for analysis.
+        <br>
+    </p>
+        A Simple Simulation
+    <p>
+        Years ago I wanted to practice writing macros in Excel, and having recently learnt about cellular automata and Conway’s game of life, I cooked up a spreadsheet that could run the simulation. Cells (squares) in the simulation with two or three ‘on’ neighbours stay ‘on’ (or ‘alive’) in the next time step; otherwise they switch ‘off’. If a cell is ‘off’ but has three neighbours ‘on’, it will switch ‘on’ in the next time step; otherwise it stays ‘off’. People have developed interesting arrangements like gliders and guns which don’t self annihilate or cycle endlessly.
+        <br>
+        <br>
+        <img src='./pics/excel.png'/>
+        Did I have nothing better to do in 2013?
+        <br>
+    </p>
 
-A Simple Simulation
-Years ago I wanted to practice writing macros in Excel, and having recently learnt about cellular automata and Conway’s game of life, I cooked up a spreadsheet that could run the simulation. Cells (squares) in the simulation with two or three ‘on’ neighbours stay ‘on’ (or ‘alive’) in the next time step; otherwise they switch ‘off’. If a cell is ‘off’ but has three neighbours ‘on’, it will switch ‘on’ in the next time step; otherwise it stays ‘off’. People have developed interesting arrangements like gliders and guns which don’t self annihilate or cycle endlessly.
-<br>
-Did I have nothing better to do in 2013?
-Using HASH
-I had a look at the js version on Conway’s Game of Life HASH.
-<br>
+        <h4>Using HASH</h4>
+    <p>
+        I had a look at the js version on Conway’s Game of Life HASH.
+        <br>
+        
+        <img src='./pics/hash.png'/>
+        <br>
 
+        The project is neatly defined by a collection of json files and at each time step javascript code is executed to calculate the next state using your computer. This can be slow for complex simulations, and it looks like the incoming cloud based compute option is where HASH is looking to make money.
+        <br>
 
-The project is neatly defined by a collection of json files and at each time step javascript code is executed to calculate the next state using your computer. This can be slow for complex simulations, and it looks like the incoming cloud based compute option is where HASH is looking to make money.
-<br>
+        The core interface accommodates a modest modern IDE and several visualisation tabs. On the ‘Raw Output’ tab you can see the log of state changes as a json list. At the bottom of whatever visualisation you’ve chosen is the execution panel where you can start, stop and replay the simulation.
+        <br>
+        <br>
+        <img src='./pics/hash3.png'/>
 
-The core interface accommodates a modest modern IDE and several visualisation tabs. On the ‘Raw Output’ tab you can see the log of state changes as a json list. At the bottom of whatever visualisation you’ve chosen is the execution panel where you can start, stop and replay the simulation.
+        HASH is intuitive to use and I like how they’ve decomposed simulations to their component parts.
+        <br>
+    </p>
+        <h4>Comparison with Aimsun</h4>
+    <p>
+        The HASH platform is particularly interesting to me as I used to do traffic and pedestrian modelling in Aimsun. Whilst Aimsun is one of the very best transport modelling tools available, there are some significant deficiencies in the way modelling is possible, and I think HASH may address some of these.
+        <br>
 
-<br>
+        One example would be cyclist modelling. In Aimsun, vehicles including bikes have a fixed path, as if they were following rails on the ground. Whilst the Aimsun team has added features to change lanes on multi-lane roads, and more recently overtaking using the opposite side of the road, the product falls far short of realistic 3 dimensional interactions between cyclists and cars. Freedom for simulated vehicles to move into gaps and around temporary objects is crucial to accurately describing behaviour, and where lacking could lead to conclusions which are dangerous to road users. There are a few academic simulations I’ve seen which do more realistic modelling of 3d space, but to me they have seemed fairly custom/not very accessible (I seem to remember a single road with simulated vehicles being rendered in Unreal Engine, in order to illustrate traffic patterns). If HASH offers an accessible and standard way of setting up such simulations it could be adopted quickly in academia and become a meaningful competitor commercially.
+        <br>
 
-HASH is intuitive to use and I like how they’ve decomposed simulations to their component parts.
-<br>
+        Another modelling assumption made for you in Aimsun and nearly all transport modelling software is that people make trips from a fixed origin to a fixed destination, and don’t care to travel anywhere else on their way. I think any platform that allows more depth of purpose is a step in the right direction. The decision makers for transport infrastructure and modellers have historically simplified trips to origin-destination matrices because it’s easier. They also tend to have a blind spot because most of these professionals have a role in society which is less likely to involve a round trip dropping kids off at school, shopping for groceries, part-time work, or going to care for an elderly relative.
+        <br>
 
-Comparison with Aimsun
-The HASH platform is particularly interesting to me as I used to do traffic and pedestrian modelling in Aimsun. Whilst Aimsun is one of the very best transport modelling tools available, there are some significant deficiencies in the way modelling is possible, and I think HASH may address some of these.
-<br>
+        Smaller scale modelling also has depth of purpose challenges. Modelling car parks is only meaningful if there are spaces involved, and a continually evolving landscape of availability. Being able to add code to model more complex goals unlocks many possibilities. It’s not too far-fetched to imagine training a ML model to make human like decisions about purpose.
+        <br>
 
-One example would be cyclist modelling. In Aimsun, vehicles including bikes have a fixed path, as if they were following rails on the ground. Whilst the Aimsun team has added features to change lanes on multi-lane roads, and more recently overtaking using the opposite side of the road, the product falls far short of realistic 3 dimensional interactions between cyclists and cars. Freedom for simulated vehicles to move into gaps and around temporary objects is crucial to accurately describing behaviour, and where lacking could lead to conclusions which are dangerous to road users. There are a few academic simulations I’ve seen which do more realistic modelling of 3d space, but to me they have seemed fairly custom/not very accessible (I seem to remember a single road with simulated vehicles being rendered in Unreal Engine, in order to illustrate traffic patterns). If HASH offers an accessible and standard way of setting up such simulations it could be adopted quickly in academia and become a meaningful competitor commercially.
-<br>
+        While HASH gives the user a lot of freedom, there is an overhead in learning to code (not a bad thing in my opinion). For the scores of transport planners using technically limited but familiar and undemanding specialist software, a couple of ‘wizards’ to help setup simulations may aid uptake. Aimsun has a feature to automatically generate roads from Open Street Map layers, which is an amazing time-saver for transport planning professionals. We also used to waste time fiddling to import altitude points from Google’s API for a realistic 3d surface. I’d highly recommend the folks at HASH look into streamlining these sorts of tasks to enhance the experience for professional users. At the time of writing it looks like they’re adding an ‘Initial state generation wizard’ and some other stuff which has high value
+        <br>
 
-Another modelling assumption made for you in Aimsun and nearly all transport modelling software is that people make trips from a fixed origin to a fixed destination, and don’t care to travel anywhere else on their way. I think any platform that allows more depth of purpose is a step in the right direction. The decision makers for transport infrastructure and modellers have historically simplified trips to origin-destination matrices because it’s easier. They also tend to have a blind spot because most of these professionals have a role in society which is less likely to involve a round trip dropping kids off at school, shopping for groceries, part-time work, or going to care for an elderly relative.
-<br>
-
-Smaller scale modelling also has depth of purpose challenges. Modelling car parks is only meaningful if there are spaces involved, and a continually evolving landscape of availability. Being able to add code to model more complex goals unlocks many possibilities. It’s not too far-fetched to imagine training a ML model to make human like decisions about purpose.
-<br>
-
-While HASH gives the user a lot of freedom, there is an overhead in learning to code (not a bad thing in my opinion). For the scores of transport planners using technically limited but familiar and undemanding specialist software, a couple of ‘wizards’ to help setup simulations may aid uptake. Aimsun has a feature to automatically generate roads from Open Street Map layers, which is an amazing time-saver for transport planning professionals. We also used to waste time fiddling to import altitude points from Google’s API for a realistic 3d surface. I’d highly recommend the folks at HASH look into streamlining these sorts of tasks to enhance the experience for professional users. At the time of writing it looks like they’re adding an ‘Initial state generation wizard’ and some other stuff which has high value
-<br>
-
-Will People Use HASH
-Yes. I can imagine studies at ITS Leeds or elsewhere cultivating an academic userbase. Also if I were still in the industry, and modelling the use of an arena by pedestrians with a closed-source paid application, I’d experiment with HASH. Given a few refinements, it could be a much needed disruptor. For now 3d actors are currently mostly cubes and the geospatial features haven’t been developed fully. I’m keen to see the roadmap unfold like open-sourcing the Rust Engine. Most of all I look forward to seeing interesting model implementations.
+        Will People Use HASH
+        Yes. I can imagine studies at ITS Leeds or elsewhere cultivating an academic userbase. Also if I were still in the industry, and modelling the use of an arena by pedestrians with a closed-source paid application, I’d experiment with HASH. Given a few refinements, it could be a much needed disruptor. For now 3d actors are currently mostly cubes and the geospatial features haven’t been developed fully. I’m keen to see the roadmap unfold like open-sourcing the Rust Engine. Most of all I look forward to seeing interesting model implementations.
+    </p>
 
     <h2>AWS Summit June 2020</h2>
     <li>18/06/2020</li>
-    Yesterday (17th June) I attended the AWS Summit Online for Europe, Middle East & Africa. The event was bookended by talks from CTO Dr. Werner Vogels and CEO Andy Jassy. I was a little disappointed that there were no major announcements, but the talks focussed on general positive outcomes for AWS clients.
-    <br>
-    I chose the ‘I build applications’ track and attended the 5 talks:
-    <br>
-    Purpose-built databases for modern applications (Level 300)
-    This was good revision for the Solutions Architect Certification I’m working on; nothing new though. The talk briefly mentions the different database options:
-    <br>
-    Amazon Aurora – SQL
-    Amazon DynamoDB – Key/Value
-    Amazon DocumentDB – Mongo Compatible
-    Amazon ElastiCache – Redis or Memchached (in-memory)
-    Amazon Neptune – Graph Database
-    Amazon Timestream – Time Series, good for sensor feeds etc.
-    Amazon Quantum Ledger Database – a ledger
-    Amazon Managed Apache Cassandra Service – wide column
-    Full-stack mobile and web development with AWS Amplify (Level 300)
-    An introduction to Amplify. I’ve not used Amplify but the talk inspired me to follow up with a basic deployment. Lots of stuff taken care of for you out of the box. I’m not sure how I feel about this, I like to know a little about how everything works in case it goes wrong. Still, looks amazing for prototyping.
-    <br>
-    Application integration patterns for microservices (Level 300)
-    The merits of SNS, SQS, and Step Functions.
-    <br>
-    Event-driven architecture (Level 300)
-    The merits of API Gateway and Event Bridge.
-    <br>
-    A path to event sourcing with Amazon MSK (Level 200)
-    MSK: Amazon Managed Streaming for Apache Kafka
-    Event sourcing –
-    Persist entities by storing a sequence of state-changing events.
-    I need to read more on this because it has some relevance for some client work.
-    <br>
-    Some points on AWS –
-    <br>
-    Netflix, Disney+, and Hulu all use AWS.
-    AWS profit for Q2 this year was $4bn.
-    Some sage advice –
-    <br>
-    Work with lots of experiments with ‘2-way doors’ (decisions you can revert). Think carefully and minimise ‘1-way doors’ (decisions which are difficult to revert).
-    Speed disproportionately matters.
+    <p>
+        Yesterday (17th June) I attended the AWS Summit Online for Europe, Middle East & Africa. The event was bookended by talks from CTO Dr. Werner Vogels and CEO Andy Jassy. I was a little disappointed that there were no major announcements, but the talks focussed on general positive outcomes for AWS clients.
+        <br>
+        I chose the ‘I build applications’ track and attended the 5 talks:
+        <br>
+        Purpose-built databases for modern applications (Level 300)
+        This was good revision for the Solutions Architect Certification I’m working on; nothing new though. The talk briefly mentions the different database options:
+    </p>
 
-
+    <li>Amazon Aurora – SQL</li>
+    <li>Amazon DynamoDB – Key/Value</li>
+    <li>Amazon DocumentDB – Mongo Compatible</li>
+    <li>Amazon ElastiCache – Redis or Memchached (in-memory)</li>
+    <li>Amazon Neptune – Graph Database</li>
+    <li>Amazon Timestream – Time Series, good for sensor feeds etc.</li>
+    <li>Amazon Quantum Ledger Database – a ledger</li>
+    <li>Amazon Managed Apache Cassandra Service – wide column</li>
+    <p>
+        Full-stack mobile and web development with AWS Amplify (Level 300)
+        An introduction to Amplify. I’ve not used Amplify but the talk inspired me to follow up with a basic deployment. Lots of stuff taken care of for you out of the box. I’m not sure how I feel about this, I like to know a little about how everything works in case it goes wrong. Still, looks amazing for prototyping.
+        <br>
+        Application integration patterns for microservices (Level 300)
+        The merits of SNS, SQS, and Step Functions.
+        <br>
+        Event-driven architecture (Level 300)
+        The merits of API Gateway and Event Bridge.
+        <br>
+        A path to event sourcing with Amazon MSK (Level 200)
+        MSK: Amazon Managed Streaming for Apache Kafka
+        Event sourcing –
+        Persist entities by storing a sequence of state-changing events.
+        I need to read more on this because it has some relevance for some client work.
+        <br>
+        Some points on AWS –
+        <br>
+        Netflix, Disney+, and Hulu all use AWS.
+        AWS profit for Q2 this year was $4bn.
+        Some sage advice –
+        <br>
+        Work with lots of experiments with ‘2-way doors’ (decisions you can revert). Think carefully and minimise ‘1-way doors’ (decisions which are difficult to revert).
+        Speed disproportionately matters.
+    </p>
 
     <h2>Leeds DevOps Sep 2019</h2>
     <li>16/09/2019</li>
-    <br>
-    We had an excellent DevOps meeting tonight, with James Healey from Carbon DMP, and Matthew Skelton from Conflux presenting.
-    <br>
-    James explained how he and his team did monitoring, alerting, and support. (Side note: he’d presented before at a prison as part of charitable education work there, https://www.code4000.org I think). As of recently, Azure and Rancher have good monitoring capabilities natively. Azure for stock or custom queries, and Rancher for CPU utilisation etc. Azure and AWS cost explorers have also recently had developments to make the costing a lot more visualisable. They use lots of familiar tooling; AWS, Rancher, Pager Duty, Trello, Kubernetes.
-    <br>
-    Other things to check out mentioned in the talk were Certcheckr and Kube-backup.
-    <br>
-    Matthew talked about the context and succession of The Spotify Model (there is no Spotify model). From a number of countries, businesses, and studies, some findings and principles arose. The talk arrived at some of these and more depth can be found in the book which is out tomorrow.
-    <br>
-    Ideas included:
-    
-    Team first thinking – considering teams as the production units and fitting work to them
-    Choosing team boundaries carefully
-    Considerations for the physical and digital workspaces; the Reverse Conway Effect which is to preemptively order teams as per the interactions expected of an efficient system
-    There are 3 fundamental team interaction modes: Collaboration, Provider/Consumer, and Facilitator/Follower.
-    Read later – Conway’s 1968 paper
-    <br>
-    Link: https://www.meetup.com/LeedsDevops/events/264672882/
+    <p>
+        We had an excellent DevOps meeting tonight, with James Healey from Carbon DMP, and Matthew Skelton from Conflux presenting.
+        <br>
+        James explained how he and his team did monitoring, alerting, and support. (Side note: he’d presented before at a prison as part of charitable education work there, https://www.code4000.org I think). As of recently, Azure and Rancher have good monitoring capabilities natively. Azure for stock or custom queries, and Rancher for CPU utilisation etc. Azure and AWS cost explorers have also recently had developments to make the costing a lot more visualisable. They use lots of familiar tooling; AWS, Rancher, Pager Duty, Trello, Kubernetes.
+        <br>
+        Other things to check out mentioned in the talk were Certcheckr and Kube-backup.
+        <br>
+        Matthew talked about the context and succession of The Spotify Model (there is no Spotify model). From a number of countries, businesses, and studies, some findings and principles arose. The talk arrived at some of these and more depth can be found in the book which is out tomorrow.
+        <br>
+        Ideas included:
+        
+        Team first thinking – considering teams as the production units and fitting work to them
+        Choosing team boundaries carefully
+        Considerations for the physical and digital workspaces; the Reverse Conway Effect which is to preemptively order teams as per the interactions expected of an efficient system
+        There are 3 fundamental team interaction modes: Collaboration, Provider/Consumer, and Facilitator/Follower.
+        Read later – Conway’s 1968 paper
+        <br>
+        Link: https://www.meetup.com/LeedsDevops/events/264672882/
+    </p>
 
 
     <h2>Code Up Leeds Aug 2019</h2>
     <li>16/09/2019</li>
-    <br>
-    I led a session for beginners on how to make an image classifier with Python. I used repl for the steps which you can find here: https://repl.it/@JohnJames5/x
+    <p>
+        I led a session for beginners on how to make an image classifier with Python. I used repl for the steps which you can find here: https://repl.it/@JohnJames5/x
+    </p>
 
     <h2>Leeds DevOps Jul 2019</h2>
     <li>15/08/2019</li>
-    <br>
-    We had 2 speakers at DevOps this month, James Scanlan from the NHS Digital Digital Delivery Centre, and Tim Edmonds from Accenture/Channel 4.
-    <br>
-    I know James from my previous work at NHSD. His talk was fairly informal and focussed on the importance of Culture in the workplace. Having worked in the environment James described and experiencing the challenges and benefits associated with the culture I didn’t take away so much from the presentation, but he had some good references.
-    <br>
-    The talk from Tim Edmonds about the challenges delivering content for Channel 4’s digital video streaming platform was very interesting. His team had a strong focus experimentation; it was interesting to see the modifications they had made in the speed at which they loaded different components of the Channel 4 On Demand service homepage.
-    <br>
-    link: https://www.meetup.com/LeedsDevops/events/263040456/
-    <br>
+    <p>
+        We had 2 speakers at DevOps this month, James Scanlan from the NHS Digital Digital Delivery Centre, and Tim Edmonds from Accenture/Channel 4.
+        <br>
+        I know James from my previous work at NHSD. His talk was fairly informal and focussed on the importance of Culture in the workplace. Having worked in the environment James described and experiencing the challenges and benefits associated with the culture I didn’t take away so much from the presentation, but he had some good references.
+        <br>
+        The talk from Tim Edmonds about the challenges delivering content for Channel 4’s digital video streaming platform was very interesting. His team had a strong focus experimentation; it was interesting to see the modifications they had made in the speed at which they loaded different components of the Channel 4 On Demand service homepage.
+        <br>
+        link: https://www.meetup.com/LeedsDevops/events/263040456/
+        <br>
+    </p>
+    
     <h2>Lean In Leeds May 2019</h2>
     <li>15/05/2019</li>
     <p>I attended a Lean In Circle yesterday which was hosted in the BJSS office. We had two speakers:
