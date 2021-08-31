@@ -2,16 +2,28 @@
 <html>
 <head>
   <title>JohnAbeJames.com</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./site.webmanifest">
+
   <style>
     body {
         background-color: black;
         margin: auto;
         padding: 16px;
         max-width: 600px;
+        font-family: Arial, Helvetica, sans-serif;
     }
-    h1   {color: lightgrey;}
+    * {
+    color: lightgrey;
+    }
+    h1   {color: white;}
+    h2   {color: white;}
     p    {color: grey;}
     a    {color: powderblue;}
+    img  {max-width: 600px;}
     </style>
 </head>
 <body>
@@ -22,13 +34,6 @@
         <a href="https://www.linkedin.com/in/john-a-james/">LinkedIn.</a>
     </p>
     <br>
-    <h2>WordPress plugins and Updating this site</h2>
-    <li>19/10/2020</li>
-    <p>
-        I’ve recently added Google Analytics to this site, using the MonsterInsights WordPress plugin, which was nice and easy. Visitors will now see a GDPR compliant prompt to accept analytics cookies in a banner; this uses another WordPress plugin, the inventively named ‘Google Analytics Opt-Out‘. I was previously doing any monitoring by using the Bandwidth graphs on Digital Ocean as a proxy, but this was an exercise in being more nosey.
-        <br>
-        The only other news on the site is that I’m thinking of putting it on a t3.nano in AWS. This would cost £3.53 per month including tax instead of the £4.68 I’m paying for a Digital Ocean Droplet. I’m simply not using all the compute or memory. I may try another plugin UpdraftPlus to copy everything across.
-    </p>
 
     <h2># HASH agent based modelling</h2>
     <li>28/06/2020</li>
@@ -45,7 +50,9 @@
     </p>
         A Simple Simulation
     <p>
-        Years ago I wanted to practice writing macros in Excel, and having recently learnt about cellular automata and Conway’s game of life, I cooked up a spreadsheet that could run the simulation. Cells (squares) in the simulation with two or three ‘on’ neighbours stay ‘on’ (or ‘alive’) in the next time step; otherwise they switch ‘off’. If a cell is ‘off’ but has three neighbours ‘on’, it will switch ‘on’ in the next time step; otherwise it stays ‘off’. People have developed interesting arrangements like gliders and guns which don’t self annihilate or cycle endlessly.
+        Years ago I wanted to practice writing macros in Excel, and having recently learnt about cellular automata and Conway’s game of life, I cooked up a spreadsheet that could run the simulation. Cells (squares) in the simulation with two or three ‘on’ neighbours stay ‘on’ (or ‘alive’) in the next time step; otherwise they switch ‘off’. If a cell is ‘off’ but has three neighbours ‘on’, it will switch ‘on’ in the next time step; otherwise it stays ‘off’. People have developed interesting arrangements like 
+        <a href="https://en.wikipedia.org/wiki/Glider_(Conway%27s_Life)">gliders</a> and 
+        <a href="https://en.wikipedia.org/wiki/Gun_(cellular_automaton)">guns</a> which don’t self annihilate or cycle endlessly.
         <br>
         <br>
         <img src='./pics/excel.png'/>
@@ -55,7 +62,8 @@
 
         <h4>Using HASH</h4>
     <p>
-        I had a look at the js version on Conway’s Game of Life HASH.
+        I had a look at the 
+        <a href="https://hash.ai/index/5de93f49d4b4c15ea799dcd9/conways-game-of-life">js version on Conway’s Game of Life HASH</a>.
         <br>
         
         <img src='./pics/hash.png'/>
@@ -90,7 +98,7 @@
         <br>
 
         Will People Use HASH
-        Yes. I can imagine studies at ITS Leeds or elsewhere cultivating an academic userbase. Also if I were still in the industry, and modelling the use of an arena by pedestrians with a closed-source paid application, I’d experiment with HASH. Given a few refinements, it could be a much needed disruptor. For now 3d actors are currently mostly cubes and the geospatial features haven’t been developed fully. I’m keen to see the roadmap unfold like open-sourcing the Rust Engine. Most of all I look forward to seeing interesting model implementations.
+        Yes. I can imagine studies at <a href="https://environment.leeds.ac.uk/transport">ITS Leeds</a> or elsewhere cultivating an academic userbase. Also if I were still in the industry, and modelling the use of an arena by pedestrians with a closed-source paid application, I’d experiment with HASH. Given a few refinements, it could be a much needed disruptor. For now 3d actors are currently mostly cubes and the geospatial features haven’t been developed fully. I’m keen to see the <a href="https://hash.ai/roadmap">roadmap unfold</a> like open-sourcing the Rust Engine. Most of all I look forward to seeing interesting model implementations.
     </p>
 
     <h2>AWS Summit June 2020</h2>
@@ -143,11 +151,13 @@
     <p>
         We had an excellent DevOps meeting tonight, with James Healey from Carbon DMP, and Matthew Skelton from Conflux presenting.
         <br>
-        James explained how he and his team did monitoring, alerting, and support. (Side note: he’d presented before at a prison as part of charitable education work there, https://www.code4000.org I think). As of recently, Azure and Rancher have good monitoring capabilities natively. Azure for stock or custom queries, and Rancher for CPU utilisation etc. Azure and AWS cost explorers have also recently had developments to make the costing a lot more visualisable. They use lots of familiar tooling; AWS, Rancher, Pager Duty, Trello, Kubernetes.
+        James explained how he and his team did monitoring, alerting, and support. (Side note: he’d presented before at a prison as part of charitable education work there, 
+        <a href="https://www.code4000.org">https://www.code4000.org</a> I think). As of recently, Azure and Rancher have good monitoring capabilities natively. Azure for stock or custom queries, and Rancher for CPU utilisation etc. Azure and AWS cost explorers have also recently had developments to make the costing a lot more visualisable. They use lots of familiar tooling; AWS, Rancher, Pager Duty, Trello, Kubernetes.
         <br>
         Other things to check out mentioned in the talk were Certcheckr and Kube-backup.
         <br>
-        Matthew talked about the context and succession of The Spotify Model (there is no Spotify model). From a number of countries, businesses, and studies, some findings and principles arose. The talk arrived at some of these and more depth can be found in the book which is out tomorrow.
+        Matthew talked about the context and succession of The Spotify Model (
+            <a href="https://www.infoq.com/presentations/spotify-culture-stc/">there is no Spotify model</a>). From a number of countries, businesses, and studies, some findings and principles arose. The talk arrived at some of these and more depth can be found in the book which is <a href="https://www.amazon.co.uk/Team-Topologies-Organizing-Business-Technology/dp/1942788819/ref=sr_1_1?crid=3SCJYMO28YMFD&keywords=team+topologies&qid=1568669741&sprefix=team+topo%2Caps%2C134&sr=8-1">out tomorrow</a>.
         <br>
         Ideas included:
         
@@ -155,16 +165,16 @@
         Choosing team boundaries carefully
         Considerations for the physical and digital workspaces; the Reverse Conway Effect which is to preemptively order teams as per the interactions expected of an efficient system
         There are 3 fundamental team interaction modes: Collaboration, Provider/Consumer, and Facilitator/Follower.
-        Read later – Conway’s 1968 paper
+        Read later – <a href="http://www.melconway.com/Home/Committees_Paper.html">Conway’s 1968 paper</a>
         <br>
-        Link: https://www.meetup.com/LeedsDevops/events/264672882/
+        Link: <a href="https://www.meetup.com/LeedsDevops/events/264672882/">https://www.meetup.com/LeedsDevops/events/264672882/</a>
     </p>
 
 
     <h2>Code Up Leeds Aug 2019</h2>
     <li>16/09/2019</li>
     <p>
-        I led a session for beginners on how to make an image classifier with Python. I used repl for the steps which you can find here: https://repl.it/@JohnJames5/x
+        I led a session for beginners on how to make an image classifier with Python. I used repl for the steps which you can find here: <a href="https://repl.it/@JohnJames5/x">https://repl.it/@JohnJames5/x</a>
     </p>
 
     <h2>Leeds DevOps Jul 2019</h2>
@@ -176,7 +186,7 @@
         <br>
         The talk from Tim Edmonds about the challenges delivering content for Channel 4’s digital video streaming platform was very interesting. His team had a strong focus experimentation; it was interesting to see the modifications they had made in the speed at which they loaded different components of the Channel 4 On Demand service homepage.
         <br>
-        link: https://www.meetup.com/LeedsDevops/events/263040456/
+        link: <a href=https://www.meetup.com/LeedsDevops/events/263040456/">https://www.meetup.com/LeedsDevops/events/263040456/</a>
         <br>
     </p>
     
