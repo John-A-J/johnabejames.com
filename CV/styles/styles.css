@@ -1,0 +1,40 @@
+body {
+    background: rgb(204,204,204);
+    font-family: 'Open Sans';
+}
+page {
+    background: white;
+    width: 21cm;
+    height: 29.7cm;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5cm;
+    padding: 1cm;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+bubble {
+    color: white;
+    background: black;
+    border-radius: 50vh;
+    padding: 0 6px;
+    font-size: 0.9rem;
+}
+
+h3 {
+    text-decoration: underline;
+}
+
+h4 span{
+    float:right;
+}
+h5 span{
+    float:right;
+}
+p {
+    font-size: 0.9rem;
+}
+div {
+    margin-left: 40px;
+    border-left: 1px solid lightgrey;
+    padding-left: 10px;
+}
