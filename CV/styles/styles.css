@@ -1,6 +1,7 @@
 body {
     background: rgb(204,204,204);
     font-family: 'Open Sans';
+    -webkit-print-color-adjust: exact !important;
 }
 page {
     background: white;
