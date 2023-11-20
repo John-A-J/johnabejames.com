@@ -10,7 +10,7 @@ page {
     display: block;
     margin: 0 auto;
     margin-bottom: 0.5cm;
-    padding: 1cm;
+    padding: 1cm 2cm;
     box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
 }
 bubble {
@@ -19,6 +19,7 @@ bubble {
     border-radius: 50vh;
     padding: 0 6px;
     font-size: 0.9rem;
+    white-space: nowrap;
 }
 
 h3 {
@@ -33,6 +34,9 @@ h5 span{
 }
 p {
     font-size: 0.9rem;
+}
+li {
+        font-size: 0.9rem;
 }
 div {
     margin-left: 40px;
