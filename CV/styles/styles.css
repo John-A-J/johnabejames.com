@@ -1,5 +1,5 @@
 body {
-    background: rgb(204,204,204);
+    /* background: rgb(204,204,204); */
     font-family: 'Open Sans';
     -webkit-print-color-adjust: exact !important;
 }
@@ -11,7 +11,7 @@ page {
     margin: 0 auto;
     margin-bottom: 0.5cm;
     padding: 1cm 2cm;
-    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+    /* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
 }
 bubble {
     color: white;
