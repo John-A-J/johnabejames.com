@@ -1,18 +1,19 @@
 body {
-    /* background: rgb(204,204,204); */
+    background: rgb(204,204,204);
     font-family: 'Open Sans';
     -webkit-print-color-adjust: exact !important;
 }
+
 page {
     background: white;
     width: 21cm;
-    height: 29.7cm;
     display: block;
     margin: 0 auto;
     margin-bottom: 0.5cm;
     padding: 1cm 2cm;
-    /* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
 }
+
 bubble {
     color: white;
     background: black;
@@ -22,7 +23,26 @@ bubble {
     white-space: nowrap;
 }
 
+@media print {
+  body {
+    background: white;
+  }
+  page {
+    box-shadow: none;
+  }
+  printInterval {
+      position: static;
+      display: grid;
+      height: 6cm;
+  }
+}
+
+section {
+    margin-bottom: 0.5cm;
+}
+
 h3 {
+    margin-top: 1cm;
     text-decoration: underline;
 }
 
