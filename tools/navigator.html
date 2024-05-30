@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Navigator</title>
+</head>
+
+<body>
+  <strong>navigator.appVersion</strong>
+  <div id="appVersion"></div>
+  <br>
+  <strong>navigator.connection.type</strong>
+  <div id="connectionType"></div>
+  <br>
+  <strong>navigator.cookieEnabled</strong>
+  <div id="cookieEnabled"></div>
+  <br>
+  <strong>navigator.language</strong>
+  <div id="language"></div>
+  <br>
+  <strong>navigator.languages</strong>
+  <div id="languages"></div>
+  <br>
+  <strong>navigator.onLine</strong>
+  <div id="onLine"></div>
+  <br>
+  <strong>navigator.platform</strong>
+  <div id="platform"></div>
+  <br>
+  <strong>navigator.userAgent</strong>
+  <div id="userAgent"></div>
+  <script>
+    document.querySelector("#appVersion").innerHTML = navigator.appVersion;
+    document.querySelector("#connectionType").innerHTML = navigator.connection.type;
+    document.querySelector("#cookieEnabled").innerHTML = navigator.cookieEnabled;
+    document.querySelector("#language").innerHTML = navigator.language;
+    document.querySelector("#languages").innerHTML = navigator.languages;
+    document.querySelector("#onLine").innerHTML = navigator.onLine;
+    document.querySelector("#platform").innerHTML = navigator.platform;
+    document.querySelector("#userAgent").innerHTML = navigator.userAgent;
+  </script>
+</body>
+
+
+
+</html>
