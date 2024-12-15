@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Branch - See Recent Files Changed</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>JohnAbeJames.com</h1>
+    <nav>
+      <a href="../index.html">Back to Articles</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>How to host a WebGL Unity build on Vercel</h2>
+    <li>16/10/2024</li>
+    <p>
+      If you want to create a game to run on the web, you can create one in Unity and then <a
+        href="https://docs.unity3d.com/Manual/webgl-building.html">build using the WebGL option</a>.
+      You should configure the builds to be compressed, so the large files can be downloaded quickly by your players in
+      their browsers.
+      Vercel staff recommended to me to use brotli compression as it's better supported.
+      You can pick up the Vercel <a href="https://vercel.com/templates/react/html-starter">HTML Starter template.</a>
+      Remove the middleware.js.
+      Add a .gitattirbutes in the root with the following:
+    </p>
+    <pre>
+            <code>
+        *.data.br filter=lfs diff=lfs merge=lfs -text
+        *.wasm.br filter=lfs diff=lfs merge=lfs -text
+            </code>
+        </pre>
+    <p>
+      Copy in the files Unity built for you, and index.html, some scripts, a directory called Build, and a directory called
+      TemplateData.
+      Rename your Build directory (eg. to Build1), and the index.html (eg. to build1.html). In the build1.html find the
+      buildUrl and change it to the name of your directory, "Build1".
+      This simple adjustment means you can add multiple pages for multiple builds for different games or versions.
+      Make sure you remember to turn on git LFS in Vercel!
+      At the root level, add a vercel.json file with the following:
+    </p>
+    <pre>
+            <code>
+        {
+            "headers": [
+                {
+                    "source": "/(.*)\\.br",
+                    "headers": [
+                        {
+                            "key": "Content-Encoding",
+                            "value": "br"
+                        }
+                    ]
+                },
+                {
+                "source": "/(.*)\\.wasm\\.br",
+                    "headers": [
+                        {
+                            "key": "Content-Type",
+                            "value": "application/wasm"
+                        }
+                    ]
+                }
+            ]
+        }
+            </code>
+        </pre>
+    <p>
+      This sets the headers as <a
+        href="https://docs.unity3d.com/Manual/webgl-server-configuration-code-samples.html">described in the unity docs</a>.
+      Push this lot, and you should be done.
+      Navigate to the link Vercel gives you, and add /build1.html to the path to get to your page.
+    </p>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2024 John Abe James</p>
+  </footer>
+</body>
+
+</html>

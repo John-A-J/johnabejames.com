@@ -1,0 +1,51 @@
+body {
+  background-color: black;
+  color: lightgrey;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+  padding: 16px;
+  max-width: 600px;
+}
+
+h1,
+h2 {
+  color: white;
+}
+
+a {
+  color: powderblue;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 600px;
+}
+
+
+header,
+footer {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+code {
+  display: block;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  color: lightgreen;
+  font-family: monospace;
+  overflow-x: auto;
+}
+
+main ul {
+  list-style: none;
+  padding: 0;
+}
+
+main ul li {
+  margin: 8px 0;
+}

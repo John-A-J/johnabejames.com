@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Branch - See Recent Files Changed</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>JohnAbeJames.com</h1>
+    <nav>
+      <a href="../index.html">Back to Articles</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>PDF generation</h2>
+    <li>18/09/2024</li>
+    <p>
+      I've been working on PDF generation for for a little while and I thought I'd share some of my findings, as it's taken
+      a while and I've explored several options.
+      Before we jump in, my context is that I've got an array of simple javascript objects in a Next.js frontend, and I want
+      to add minimal formatting and style to them, and I want a downloadable pdf result generated at runtime for a live
+      project.
+      It seemed sensible to first create html of the output I wanted, and then convert that to pdf. I've worked on a team
+      that did that before, and I don't want to get bogged down in editing <a
+        href="https://medium.com/@jberkenbilt/the-structure-of-a-pdf-file-6f08114a58f6">internal pdf syntax</a>!
+      I came across the article <a href="https://apitemplate.io/blog/how-to-convert-html-to-pdf-using-node-js/">Convert HTML
+        to PDF in Node.js with 4 Popular Libraries (Updated 2024)</a> which sounded like a good way to start assessing
+      options.
+      The article presents Node.js libraries:
+    </p>
+    <ul>
+      <li>Puppeteer</li>
+      <li>jsPDF</li>
+      <li>Playwright</li>
+      <li>html-pdf</li>
+    </ul>
+    <p>
+      It would be easier just to do it client side, so Puppeteer and Playwright were straight out.
+      html-pdf sits on top of PhantomJS (depracated) so the logical choice is to pick up jsPDF. The blog article even has
+      some of the code I'll need, great.
+      <br />
+      <br />
+      <code>
+                const doc = new jsPDF();<br />
+                doc.text(textContent, 10, 10);
+            </code>
+      <br />
+      <br />
+      The 10, 10 arguments are the coordinates (in mm) in the document. If I want to put all my text lines into the pdf I'll
+      have to split lines myself and manage all the styling; write code to add lines at (10, 20), (10, 30) and so on.
+      So instead of inventing a whole program to display the content maybe lets try another approach?
+
+      <br />
+
+      I next tried Puppeteer, which wouldn't work client side so I created an api endpoint in my project.
+      However Puppeteer sits atop chrome, and while everything ran smoothly locally, I had trouble running chrome on Vercel,
+      where I was running an api endpoint. As I made my way further into the maze of fruitless fixes on google and
+      stackoverflow I decided to stop and try a different library again.
+
+      At this point I considered html-pdf.. It's not ideal as it's been unmaintained for a while, but my use case is simple
+      and I just need a basic solution.
+    </p>
+    <p>
+
+      However before proceeding I had a search for "pdf" packages on <a href="https://www.npmjs.com/">npmjs.com</a>. I
+      discovered <a href="" https://www.npmjs.com/package/react-to-pdf">react-to-pdf</a>, a great solution for my usecase,
+      as my starting point was one having all the data on the frontend.
+      With a couple of edits and mapping my data array into basic components with a little styling, I was able to satisfy my
+      requirements.
+      One drawback was that the div containing the content needed to be fully visible, and full height. I didn't want to
+      actually show all the data because at this point it was important that the user clicked to to download, and I didn't
+      want them to be distracted.
+      <!-- Making the div scrollable (overflow-y: scroll) clipped the pdf output, so the easy way to show just a little was also . -->
+      I set up the screen to have a div concealing the div for pdf output, with a blank div on top containing the download
+      button.
+      The drawbacks of this setup were that a narrow viewport would be reflected in the pdf output, but the project was
+      intended for desktop and really more of a proof of concept, so I decided to stop the engineering at this point.
+
+    </p>
+    <p>
+      Lastly it's worth mentioning that there are also web APIs to call with your html which return a pdf, but I think this
+      is probably unnecessary for most developers who can spend just a little more effort running a service themselves in
+      most scenarios.
+    </p>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2024 John Abe James</p>
+  </footer>
+</body>
+
+</html>

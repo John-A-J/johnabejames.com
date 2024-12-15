@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Branch - See Recent Files Changed</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>JohnAbeJames.com</h1>
+    <nav>
+      <a href="../index.html">Back to Articles</a>
+    </nav>
+  </header>
+
+  <main>
+  <h2>Git branch - see recent files changed</h2>
+  <li>11/12/2024</li>
+  <p>
+    When reviewing code I might checkout a branch and then return to what I was working on. But what was I working on?
+    Sometimes I can't remember the files I've just been messing with, so I've started using this command:
+  </p>
+  <code>
+          git --no-pager diff --name-only HEAD~1 HEAD
+      </code>
+  <p>
+    It lists the edited files between the current head and the last commit. I alias it to <code>git~1</code>
+  </p>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 John Abe James</p>
+  </footer>
+</body>
+
+</html>

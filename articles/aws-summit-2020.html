@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Branch - See Recent Files Changed</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>JohnAbeJames.com</h1>
+    <nav>
+      <a href="../index.html">Back to Articles</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>AWS Summit June 2020</h2>
+    <li>18/06/2020</li>
+    <p>
+      Yesterday (17th June) I attended the AWS Summit Online for Europe, Middle East & Africa. The event was bookended by
+      talks from CTO Dr. Werner Vogels and CEO Andy Jassy. I was a little disappointed that there were no major
+      announcements, but the talks focussed on general positive outcomes for AWS clients.
+      <br>
+      I chose the ‘I build applications’ track and attended the 5 talks:
+      <br>
+      Purpose-built databases for modern applications (Level 300)
+      This was good revision for the Solutions Architect Certification I’m working on; nothing new though. The talk briefly
+      mentions the different database options:
+    </p>
+    
+    <li>Amazon Aurora – SQL</li>
+    <li>Amazon DynamoDB – Key/Value</li>
+    <li>Amazon DocumentDB – Mongo Compatible</li>
+    <li>Amazon ElastiCache – Redis or Memchached (in-memory)</li>
+    <li>Amazon Neptune – Graph Database</li>
+    <li>Amazon Timestream – Time Series, good for sensor feeds etc.</li>
+    <li>Amazon Quantum Ledger Database – a ledger</li>
+    <li>Amazon Managed Apache Cassandra Service – wide column</li>
+    <p>
+      Full-stack mobile and web development with AWS Amplify (Level 300)
+      An introduction to Amplify. I’ve not used Amplify but the talk inspired me to follow up with a basic deployment. Lots
+      of stuff taken care of for you out of the box. I’m not sure how I feel about this, I like to know a little about how
+      everything works in case it goes wrong. Still, looks amazing for prototyping.
+      <br>
+      Application integration patterns for microservices (Level 300)
+      The merits of SNS, SQS, and Step Functions.
+      <br>
+      Event-driven architecture (Level 300)
+      The merits of API Gateway and Event Bridge.
+      <br>
+      A path to event sourcing with Amazon MSK (Level 200)
+      MSK: Amazon Managed Streaming for Apache Kafka
+      Event sourcing -
+      Persist entities by storing a sequence of state-changing events.
+      I need to read more on this because it has some relevance for some client work.
+      <br>
+      Some points on AWS -
+      <br>
+      Netflix, Disney+, and Hulu all use AWS.
+      AWS profit for Q2 this year was $4bn.
+      Some sage advice -
+      <br>
+      Work with lots of experiments with '2-way doors' (decisions you can revert). Think carefully and minimise '1-way
+      doors' (decisions which are difficult to revert).
+      Speed disproportionately matters.
+    </p>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 John Abe James</p>
+  </footer>
+</body>
+
+</html>
