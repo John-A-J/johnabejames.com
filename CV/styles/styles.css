@@ -33,7 +33,7 @@ bubble {
   printInterval {
       position: static;
       display: grid;
-      height: 6cm;
+      height: 4cm;
   }
 }
 
