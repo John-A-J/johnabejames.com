@@ -3,45 +3,205 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Navigator</title>
+  <title>Browser Detection</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .property-row {
+      margin-bottom: 15px;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .property-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .property-value {
+      padding: 8px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      font-family: monospace;
+      overflow-wrap: break-word;
+    }
+
+    .detection-result {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #f0f8ff;
+      border-radius: 6px;
+      border-left: 5px solid #4682b4;
+    }
+  </style>
 </head>
 
 <body>
-  <strong>navigator.appVersion</strong>
-  <div id="appVersion"></div>
-  <br>
-  <strong>navigator.connection.type</strong>
-  <div id="connectionType"></div>
-  <br>
-  <strong>navigator.cookieEnabled</strong>
-  <div id="cookieEnabled"></div>
-  <br>
-  <strong>navigator.language</strong>
-  <div id="language"></div>
-  <br>
-  <strong>navigator.languages</strong>
-  <div id="languages"></div>
-  <br>
-  <strong>navigator.onLine</strong>
-  <div id="onLine"></div>
-  <br>
-  <strong>navigator.platform</strong>
-  <div id="platform"></div>
-  <br>
-  <strong>navigator.userAgent</strong>
-  <div id="userAgent"></div>
+  <h1>Browser Information</h1>
+
+  <div class="detection-result" id="browserDetection">
+    <h2>Detection Result</h2>
+    <div id="detectionResult"></div>
+  </div>
+
+  <h2>Navigator Properties</h2>
+
+  <div class="property-row">
+    <div class="property-name">navigator.userAgent</div>
+    <div class="property-value" id="userAgent"></div>
+  </div>
+
+  <div class="property-row">
+    <div class="property-name">navigator.appVersion</div>
+    <div class="property-value" id="appVersion"></div>
+  </div>
+
+  <div class="property-row">
+    <div class="property-name">navigator.appName</div>
+    <div class="property-value" id="appName"></div>
+  </div>
+
+  <div class="property-row">
+    <div class="property-name">navigator.platform</div>
+    <div class="property-value" id="platform"></div>
+  </div>
+
+  <div class="property-row">
+    <div class="property-name">navigator.language</div>
+    <div class="property-value" id="language"></div>
+  </div>
+
+  <div class="property-row">
+    <div class="property-name">navigator.languages</div>
+    <div class="property-value" id="languages"></div>
+  </div>
+
+  <div class="property-row">
+    <div class="property-name">navigator.cookieEnabled</div>
+    <div class="property-value" id="cookieEnabled"></div>
+  </div>
+
+  <div class="property-row">
+    <div class="property-name">navigator.onLine</div>
+    <div class="property-value" id="onLine"></div>
+  </div>
+
+  <div class="property-row">
+    <div class="property-name">navigator.vendor</div>
+    <div class="property-value" id="vendor"></div>
+  </div>
+
+  <div class="property-row">
+    <div class="property-name">navigator.doNotTrack</div>
+    <div class="property-value" id="doNotTrack"></div>
+  </div>
+
+  <div class="property-row">
+    <div class="property-name">Safari-specific property (window.safari)</div>
+    <div class="property-value" id="safariSpecific"></div>
+  </div>
+
   <script>
-    document.querySelector("#appVersion").innerHTML = navigator.appVersion;
-    document.querySelector("#connectionType").innerHTML = navigator.connection.type;
-    document.querySelector("#cookieEnabled").innerHTML = navigator.cookieEnabled;
-    document.querySelector("#language").innerHTML = navigator.language;
-    document.querySelector("#languages").innerHTML = navigator.languages;
-    document.querySelector("#onLine").innerHTML = navigator.onLine;
-    document.querySelector("#platform").innerHTML = navigator.platform;
-    document.querySelector("#userAgent").innerHTML = navigator.userAgent;
+    // Helper function to safely get and display property values
+    function safeGetProperty(obj, prop, elementId) {
+      const element = document.getElementById(elementId);
+      try {
+        // Handle nested properties like connection.type
+        if (prop.includes('.')) {
+          const parts = prop.split('.');
+          let value = obj;
+          for (const part of parts) {
+            if (value === undefined || value === null) {
+              element.textContent = 'undefined';
+              return 'undefined';
+            }
+            value = value[part];
+          }
+          const result = value !== undefined ? String(value) : 'undefined';
+          element.textContent = result;
+          return result;
+        } else {
+          // Handle direct properties
+          const value = obj[prop];
+          const result = value !== undefined ? String(value) : 'undefined';
+          element.textContent = result;
+          return result;
+        }
+      } catch (error) {
+        element.textContent = `Error: ${error.message}`;
+        return 'error';
+      }
+    }
+
+    // Display all the navigator properties
+    safeGetProperty(navigator, 'userAgent', 'userAgent');
+    safeGetProperty(navigator, 'appVersion', 'appVersion');
+    safeGetProperty(navigator, 'appName', 'appName');
+    safeGetProperty(navigator, 'platform', 'platform');
+    safeGetProperty(navigator, 'language', 'language');
+
+    // Special handling for languages array
+    try {
+      const languages = navigator.languages ? Array.from(navigator.languages).join(', ') : 'undefined';
+      document.getElementById('languages').textContent = languages;
+    } catch (error) {
+      document.getElementById('languages').textContent = `Error: ${error.message}`;
+    }
+
+    safeGetProperty(navigator, 'cookieEnabled', 'cookieEnabled');
+    safeGetProperty(navigator, 'onLine', 'onLine');
+    safeGetProperty(navigator, 'vendor', 'vendor');
+    safeGetProperty(navigator, 'doNotTrack', 'doNotTrack');
+
+    // Check for Safari-specific property
+    document.getElementById('safariSpecific').textContent =
+      (typeof window.safari !== 'undefined') ? 'Present (Safari detected)' : 'Not present';
+
+    // Safari detection methods
+    function isSafariByUserAgent() {
+      const userAgent = navigator.userAgent.toLowerCase();
+      return userAgent.includes('safari') &&
+        !userAgent.includes('chrome') &&
+        !userAgent.includes('chromium') &&
+        !userAgent.includes('edg');
+    }
+
+    function isSafariByFeatures() {
+      return (
+        // Check for Safari-specific property
+        typeof window.safari !== 'undefined' ||
+        // Check for a CSS feature that's implemented differently in Safari
+        !!(document.documentElement.style.webkitUserSelect !== undefined &&
+          !('chrome' in window))
+      );
+    }
+
+    function isSafariByVendor() {
+      return navigator.vendor &&
+        navigator.vendor.indexOf('Apple') > -1 &&
+        navigator.userAgent &&
+        !navigator.userAgent.includes('CriOS') &&
+        !navigator.userAgent.includes('FxiOS');
+    }
+
+    // Display the detection results
+    const detectionResult = document.getElementById('detectionResult');
+    const isSafari1 = isSafariByUserAgent();
+    const isSafari2 = isSafariByFeatures();
+    const isSafari3 = isSafariByVendor();
+
+    detectionResult.innerHTML = `
+      <p><strong>Method 1 (User Agent):</strong> ${isSafari1 ? 'Safari detected' : 'Not Safari'}</p>
+      <p><strong>Method 2 (Features):</strong> ${isSafari2 ? 'Safari detected' : 'Not Safari'}</p>
+      <p><strong>Method 3 (Vendor):</strong> ${isSafari3 ? 'Safari detected' : 'Not Safari'}</p>
+      <p><strong>Final verdict:</strong> ${(isSafari1 || isSafari2 || isSafari3) ? 'This is Safari' : 'This is not Safari'}</p>
+    `;
   </script>
 </body>
-
-
 
 </html>
