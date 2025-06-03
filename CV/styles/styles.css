@@ -42,8 +42,13 @@ section {
 }
 
 h3 {
-    margin-top: 1cm;
+    margin-top: 0.7cm;
     text-decoration: underline;
+}
+
+h4 {
+    margin-top: 0.5cm;
+    margin-bottom: 0.5cm;
 }
 
 h4 span{
