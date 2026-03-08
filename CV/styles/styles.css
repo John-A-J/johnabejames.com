@@ -30,11 +30,6 @@ bubble {
   page {
     box-shadow: none;
   }
-  printInterval {
-      position: static;
-      display: grid;
-      height: 4cm;
-  }
 }
 
 section {
